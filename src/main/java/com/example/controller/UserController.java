@@ -22,6 +22,46 @@ public class UserController {
 	@Autowired
 	BCryptPasswordEncoder passEncoder;
 	
+	//사용자 포인트 읽기
+	@RequestMapping("/getPoint")
+	@ResponseBody
+	public int getPoint(String uid){
+		UserVO vo=dao.read(uid);
+		return vo.getPoint();
+	}
+	
+	//사용자 목록
+	@RequestMapping("/list")
+	public String list(Model model){
+		model.addAttribute("list", dao.list());
+		model.addAttribute("pageName", "user/list.jsp");
+		return "/home";
+	}
+	
+	//보낸메시지
+	@RequestMapping("/send")
+	public String send(Model model, String uid) {
+		model.addAttribute("list", dao.list());
+		model.addAttribute("vo" ,dao.read(uid));
+		model.addAttribute("pageName","user/send.jsp");
+		return "/home";
+	}
+	
+	//받은메시지
+	@RequestMapping("/receive")
+	public String receive(Model model, String uid){
+		model.addAttribute("vo" , dao.read(uid));
+		model.addAttribute("pageName","user/receive.jsp");
+		return "/home";
+	}
+	
+	@RequestMapping("/read")
+	public String read(Model model , String uid) {
+		model.addAttribute("pageName" , "user/read.jsp");
+		model.addAttribute("vo" , dao.read(uid));
+		return "/home";
+	}
+	
 	@RequestMapping("/login")
 	public String login(Model model){
 		model.addAttribute("pageName", "user/login.jsp");

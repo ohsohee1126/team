@@ -3,6 +3,7 @@
 #page {
 	width: 960px;
 	margin: 0px auto;
+	margin-botton:50px;
 }
 
 #menu {
@@ -41,7 +42,8 @@ table {
 
 td {
 	padding: 10px;
-	border-bottom : 1px dotted gray;
+	border-bottom : 1px dotted #e2e2e2;
+	margin-bottom: 50px;
 }
 
 table .title {
@@ -55,7 +57,7 @@ table .row:hover {
 	font-weight: bold;
 }
 
-h1 {text-align: center;}
+h1 {text-align: center; margin-bottom: 50px;}
 
 input {
 	border: 1px soild gray;
